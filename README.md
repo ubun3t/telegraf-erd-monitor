@@ -5,6 +5,8 @@ In this guide we are going to see how to install and configure Grafana + Influxd
 ## Pre-requisitos 📋
  
  This document does not cover Ubuntu installation or Elrond node. There are very good guides for this.
+ 
+ https://docs.elrond.com/validators/system-requirements
 
 ## Agenda
    1. Add necessary repositories to install Grafana + Influxdb + Telegraf

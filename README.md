@@ -81,6 +81,47 @@ Vamos a añadir los repositorios necesarios :
             user     admin
             ----     -----
             telegraf false
+ #### 4. Configurar Telegraf 
+
+Ahora que ya tenemos influxdb esperando datos, vamos a configurar telegraf para que lea métricas del nodo y las envíe a la base de datos. El archivo de configuración de telegraf está en "/etc/telegraf/telegraf.conf". 
+Este archivo por defecto trae un muchos "inputs" que permiten leer métricas de todo tipo de servicios (mysql, apache, nginx, postfix, red, cpu, etc...). Vamos a guardar este archivo como backup y vamos a crear un archivo desde 0 más limpio y sólo con los inputs que necesitamos. Así todo será más fácil :)
+
+      ##################### Global Agent Configuration #########################
+        [agent]
+        hostname = "erd.node"           
+        flush_interval = "60s"        
+        interval = "60s"               
+
+        # Input Plugins                
+        [[inputs.cpu]]
+            percpu = true
+            totalcpu = true
+            collect_cpu_time = false
+            report_active = false
+        [[inputs.disk]]
+            ignore_fs = ["tmpfs", "devtmpfs", "devfs"]
+        [[inputs.io]]
+        [[inputs.mem]]
+        [[inputs.net]]
+        [[inputs.system]]
+        [[inputs.swap]]
+        [[inputs.netstat]]
+        [[inputs.processes]]
+        [[inputs.kernel]]
+
+        # Output Plugin InfluxDB       
+        [[outputs.influxdb]]           
+        database = "telegraf"          
+        urls = [ "http://127.0.0.1:8086" ]
+        username = "telegraf"        
+        password = "loquesea"         
+        
+        [[inputs.exec]]                     
+        commands = ["/etc/telegraf/check_erd_node_metrics_0"]
+        timeout = "5s"                        
+        name_override = "node0_stats"       
+        data_format = "json"            
+        json_string_fields = ["erd_node_type","erd_peer_type"]
 
 
 Mira **Deployment** para conocer como desplegar el proyecto.

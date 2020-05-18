@@ -179,6 +179,7 @@ Una de estas carpetas es "/elrond-utils" donde tenemos dos herramientas que nos 
 Cada nodo cuando inica lanza un servicio escuchando en el puerto 8080 para el primer nodo, 8081 para el segundo, 808X para los sguientes. Podemos acceder a ese servicio mediante el siguiente comando : 
 
     cd /home/tu-usuario/elrond-utils/
+    
     ./termui -address localhost:8080
         
 

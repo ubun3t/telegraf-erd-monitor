@@ -183,7 +183,7 @@ Cada nodo cuando inica lanza un servicio escuchando en el puerto 8080 para el pr
     ./termui -address localhost:8080
         
 
-
+[[ https://github.com/ubun3t/telegraf-erd-monitor/blob/master/Splynx%20Tickets%20Grafana(1).png ]]
 
 Mira **Deployment** para conocer como desplegar el proyecto.
 

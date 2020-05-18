@@ -122,7 +122,40 @@ Este archivo por defecto trae un muchos "inputs" que permiten leer métricas de 
         name_override = "node0_stats"       
         data_format = "json"            
         json_string_fields = ["erd_node_type","erd_peer_type"]
+Puntos importantes del archivo : 
 
+Nombre que quieres enviar a la base de datos y será el que luego uses en las consultas en Grafana. 
+
+    hostname = "erd.node"  
+Intervalo, cada cuanto tiempo quieres leer la info. 
+       
+    interval = "60s"
+Conexión con InfluxDB. Vamos a declarar un "output" basado en influxdb para decirle a telegraf que lo use para almacenar ahí las métricas. Usamos los datos del punto 3 de esta guía. 
+
+Si nuestro servidor influxdb está en la misma máquina que telegraf. 
+    
+    urls = [ "http://127.0.0.1:8086" ]   
+Si hemos instalado influxdb y grafana en otro servidor 
+
+    urls = [ "http://YOUR-SERVER-IP:8086" ]  
+
+Vamos a definir un "input" del tipo de exec. Este tipo de input es un plugin le dice a telegraf que debe de ejecutar un comando en cada intervalo y hace un "output" en el formato que le digamos. 
+
+    [[inputs.exec]]
+
+Path al el script que nos servirá como input y nos dará datos para poder enviar a influxdb. Le podéis poner el nombre que queráis.
+    
+    commands = ["/etc/telegraf/check_erd_node_metrics_0"]
+Nombre de la métrica. Este nombre es el que vamos a ver en Grafana y el que vamos a seleccionar para acceder a todas las métricas. Imagínalo como una tabla dentro de la base de datos.  
+
+    name_override = "node0_stats"
+Importante : formato en el que vamos a recibir la informamción del script. En nuestro caso será json.
+
+    data_format = "json"
+
+Esta opción nos permite enviar cadenas de texto como output. Sin esta config las variables leidas  erd_node_type","erd_peer_type" que tiene cadenas de texto no se almacenarían y no las tendríamos disponibles en grafana para poder mostrarlas en nuestros dashboard. 
+
+    json_string_fields = ["erd_node_type","erd_peer_type"]
 
 Mira **Deployment** para conocer como desplegar el proyecto.
 

@@ -157,6 +157,33 @@ Esta opción nos permite enviar cadenas de texto como output. Sin esta config la
 
     json_string_fields = ["erd_node_type","erd_peer_type"]
 
+Si quisiérmos confiugrar más nodos debemos de agregar más inputs con : el script que leerá del nodo y cambiamos el nombre. Por ejemplo : 
+
+      [[inputs.exec]]
+        commands = ["/etc/telegraf/check_erd_node_metrics_1"]
+        timeout = "5s"
+        name_override = "node1_stats"
+        data_format = "json"
+        json_string_fields = ["erd_node_type","erd_peer_type"]
+
+        [[inputs.exec]]
+        commands = ["/etc/telegraf/check_erd_node_metrics_2"]
+        timeout = "5s"
+        name_override = "node2_stats"
+        data_format = "json"
+        json_string_fields = ["erd_node_type","erd_peer_type"]
+  
+  #### 4.1 Script para leer información del nodo.       
+Por defecto al instalar un node se crean varios directorios dentro del home del usuario que hemos usado para instalar. 
+Una de estas carpetas es "/elrond-utils" donde tenemos dos herramientas que nos ayudan a tener una visón en tiempo real del nodo mediante CLI : logviewer y termui. 
+Cada nodo cuando inica lanza un servicio escuchando en el puerto 8080 para el primer nodo, 8081 para el segundo, 808X para los sguientes. Podemos acceder a ese servicio mediante el siguiente comando : 
+
+    cd /home/tu-usuario/elrond-utils/
+    ./termui -address localhost:8080
+        
+
+
+
 Mira **Deployment** para conocer como desplegar el proyecto.
 
 

@@ -219,6 +219,27 @@ Si ves algo como lo siguiente, es que todo ha ido bien :
     2020-05-17T17:57:32Z I! [agent] Config: Interval:1m0s, Quiet:false, Hostname:"erd.node", Flush Interval:1m0s
 
 
+#### 5. Configurar Grafana.
+Grafana por defecto escucha en el puerto 3000. Así que deberás escribir la ip-your-server:3000 para acceder a su entoreno web : 
+     
+     http://IP:address:3000
+
+![login](https://user-images.githubusercontent.com/16337441/82241923-3e918380-993d-11ea-9efd-709c82ffcffa.png)
+
+El usuario y contraseña por defecto son  admin/admin. Te pedirá que cambies la contraseña. 
+
+![password](https://user-images.githubusercontent.com/16337441/82241938-42250a80-993d-11ea-8e6d-8ade7f7d6225.png)
+
+Ya estamos dentro!! 
+
+![data_source](https://user-images.githubusercontent.com/16337441/82241953-481aeb80-993d-11ea-9e98-69f24a21357b.png)
+
+Ahora hay que agregar un origen de datos : InfluxDB en nuestro caso. 
+
+
+
+
+
 
 ### Pre-requisitos 📋
 

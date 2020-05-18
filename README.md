@@ -236,7 +236,7 @@ Ya estamos dentro!!
 
 Ahora hay que agregar un origen de datos : InfluxDB en nuestro caso. 
 
-![InfluxDB Settings Grafana](https://user-images.githubusercontent.com/16337441/82243684-50c0f100-9940-11ea-81ce-fe17798c4d4b.png)
+![InfluxDB Settings Grafana](https://user-images.githubusercontent.com/16337441/82244171-1e63c380-9941-11ea-9c0e-5c5657fe5caa.png)
 
 
 

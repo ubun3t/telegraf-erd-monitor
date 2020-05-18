@@ -1,6 +1,6 @@
 # Monitor ERD Node with Telegraf+Grafana
 
-_In this guide we are going to see how to install and configure Grafana + Influxdb + Telegraf to monitor a node based on Ubuntu 18.0.4._
+In this guide we are going to see how to install and configure Grafana + Influxdb + Telegraf to monitor a node based on Ubuntu 18.0.4.
 
 ## Pre-requisitos 📋
  
@@ -172,7 +172,7 @@ Si quisiérmos confiugrar más nodos debemos de agregar más inputs con : el scr
         name_override = "node2_stats"
         data_format = "json"
         json_string_fields = ["erd_node_type","erd_peer_type"]
-  
+      
   #### 4.1 Script para leer información del nodo.       
 Por defecto al instalar un node se crean varios directorios dentro del home del usuario que hemos usado para instalar. 
 Una de estas carpetas es "/elrond-utils" donde tenemos dos herramientas que nos ayudan a tener una visón en tiempo real del nodo mediante CLI : logviewer y termui. 
@@ -198,8 +198,15 @@ Pegamos el siguiente contenido :
        exit 2 
     fi
     echo ${OUTPUT}
+Guardar los cambios, hacer el archivo ejecutable y hacer a telegraf propietario : 
 
-Mira **Deployment** para conocer como desplegar el proyecto.
+    chmod +x check_erd_node_metrics_0
+    chown telegraf check_erd_node_metrics_0 
+
+Probamos que todo funcione :
+
+    sudo telegraf telegraf --config telegraf.conf
+    
 
 
 ### Pre-requisitos 📋

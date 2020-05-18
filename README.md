@@ -233,7 +233,7 @@ If you see something like the following, it is that everything went well:
 #### 5. Configurar Grafana.
 Grafana by default listens on port 3000. So you will have to write the ip-your-server: 3000 to access its web environment:
      
-     http://IP:address:3000
+     http://IP-address:3000
 
 ![login](https://user-images.githubusercontent.com/16337441/82241923-3e918380-993d-11ea-9efd-709c82ffcffa.png)
 

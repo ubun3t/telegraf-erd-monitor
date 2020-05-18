@@ -4,49 +4,49 @@ _In this guide we are going to see how to install and configure Grafana + Influx
 
 ## Pre-requisitos 📋
  
- _1 Ubuntu 18.0.4 installed_
- 
- _2 ERD node running_
+ Este documento no cubre la instalación de Ubuntu ni el nodo de Elrond. Hay muy buenas guías para ello. 
 
 ## Agenda
-   _1. Añadir repositorios necesarios para instalar Grafana + Influxdb + Telegraf_
+   1. Añadir repositorios necesarios para instalar Grafana + Influxdb + Telegraf
   
-   _2. Instalar paquetes. Dependiendo de tu diseño, se hará todo en el mismo servidor donde tengas el nodo o en nodos separados. Telegraf siempre deberá de correr en el nodo. Grafana e Influxdb pueden correr fuera en otro server._
+   2. Instalar paquetes. Dependiendo de tu diseño, se hará todo en el mismo servidor donde tengas el nodo o en nodos separados. Telegraf siempre deberá de correr en el nodo. Grafana e Influxdb pueden correr fuera en otro server.
   
-   _3. Crear base de datos en Influxdb + usuario de acceso._
+   3. Crear base de datos en Influxdb + usuario de acceso.
   
-   _4. Configurar Telegraf para leer información del nodo y enviarla a la base de datos Influxdb recién creada._
+   4. Configurar Telegraf para leer información del nodo y enviarla a la base de datos Influxdb recién creada.
   
-   _5. Configurar Grafana y agregar el oriegen de datos recién creado de Influxdb para hacer consultas a los datos que se vayan almacenando ahí._ 
+   5. Configurar Grafana y agregar el oriegen de datos recién creado de Influxdb para hacer consultas a los datos que se vayan almacenando ahí.
   
-   _6. Importar dashboard para tener información útil del estado del nodo._
+   6. Importar dashboard para tener información útil del estado del nodo.
 
 
 ## Comenzando 🚀
 
-_Vamos a añadir los repositorios necesarios :_
+Vamos a añadir los repositorios necesarios :
 
  #### _1. Añadir repositorios. (https://docs.influxdata.com/telegraf/v1.14/introduction/installation/#)_
     
-   _Influxdb + Telegraf :_
+   Influxdb + Telegraf :
     
     wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
     source /etc/lsb-release
     echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
            
-   _Grafana :_
-    _Añadimos la rama estable  de la versión enterprise que tiene lo mismo que la "open source" pero nos permite suscribirnos en cualquier momento del futuro sin hacer nada._
+   Grafana :
+    
+   Añadimos la rama estable  de la versión enterprise que tiene lo mismo que la "open source" pero nos permite suscribirnos en cualquier momento del futuro sin hacer nada.
     
     sudo add-apt-repository "deb https://packages.grafana.com/enterprise/deb stable main"
 
-#### _2. Instalar paquetes_
-    _Influxdb + Telegraf :_
+#### 2. Instalar paquetes
+   Influxdb + Telegraf :
     
     sudo apt-get update && sudo apt-get install apt-transport-https
     sudo apt-get update && sudo apt-get install telegraf influxdb
     sudo service telegraf start 
     sudo service influxdb start 
-   _Grafana :  (https://grafana.com/docs/grafana/latest/installation/debian/)_
+   
+   Grafana :  (https://grafana.com/docs/grafana/latest/installation/debian/)
             
     sudo apt-get install -y software-properties-common wget
     wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -

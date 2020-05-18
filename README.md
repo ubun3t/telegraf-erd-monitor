@@ -1,6 +1,6 @@
 # Monitor ERD Node with Telegraf+Grafana
 
-_Acá va un párrafo que describa lo que es el proyecto_
+_In this guide we are going to see how to install and configure Grafana + Influxdb + Telegraf to monitor a node based on Ubuntu 18.0.4._
 
 ## Comenzando 🚀
 

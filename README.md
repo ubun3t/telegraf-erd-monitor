@@ -54,7 +54,7 @@ Vamos a añadir los repositorios necesarios :
     sudo apt-get install grafana
     sudo service grafana-server start
 
-#### _3. Vamos a crear la base de datos en Influxdb para que Telegraf pueda guardar toda la info relativa al nodo_
+#### 3. Vamos a crear la base de datos en Influxdb para que Telegraf pueda guardar toda la info relativa al nodo
     
    Con este comando entramos en la consola de influxdb para poder lanzar comandos, crear bases de datos, usuarios, etc..
          

@@ -60,16 +60,17 @@ We are going to add the necessary repositories:
 
 #### 3. We are going to create the database in Influxdb so that Telegraf can save all the information related to the node
     
- With this command we enter the influexdb console to be able to launch commands, create databases, users, etc.
+ With this command we enter the influxdb console to be able to launch commands, create databases, users, etc.
          
          influx 
          
- We create the database called "telegraf". We can give it a name that we want but it is good that we leave telegraf so that when the dashboard is imported into grafana it works well.
+ We create the database called "telegraf". 
    
         create database telegraf   
+ 
  We create the user "telegraf" with password "whatever". Here you can put the user / pass you want, it is not relevant. We will use it in the telegraf.conf file to insert the database.
    
-        create user telegraf with password 'contraseña'  
+        create user telegraf with password 'password-change'  
   
  Show available databases, including ours :
   

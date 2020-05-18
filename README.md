@@ -176,14 +176,28 @@ Si quisiérmos confiugrar más nodos debemos de agregar más inputs con : el scr
   #### 4.1 Script para leer información del nodo.       
 Por defecto al instalar un node se crean varios directorios dentro del home del usuario que hemos usado para instalar. 
 Una de estas carpetas es "/elrond-utils" donde tenemos dos herramientas que nos ayudan a tener una visón en tiempo real del nodo mediante CLI : logviewer y termui. 
-Cada nodo cuando inica lanza un servicio escuchando en el puerto 8080 para el primer nodo, 8081 para el segundo, 808X para los sguientes. Podemos acceder a ese servicio mediante el siguiente comando : 
+Cada nodo cuando inicia lanza un servicio escuchando en el puerto 8080 para el primer nodo, 8081 para el segundo, 808X para los siguientes. Podemos acceder a ese servicio mediante el siguiente comando : 
 
     cd /home/tu-usuario/elrond-utils/
     
     ./termui -address localhost:8080
-        
+El script check_erd_node_metrics_X lo que hace es hacer uso de esa información de una forma muy sencilla : 
+      
+    cd /etc/telegraf/
+    vim check_erd_node_metrics_0   
 
-[[ https://github.com/ubun3t/telegraf-erd-monitor/blob/master/Splynx%20Tickets%20Grafana(1).png ]]
+Pegamos el siguiente contenido :
+
+    #!/bin/bash
+   
+    OUTPUT=`curl -s 127.0.0.1:8080/node/status 2>/dev/null | jq ".details // empty"` # returns "" when null  
+      
+    ret=$?
+    if [ -z "${OUTPUT}" ] || [ ${ret} -ne 0 ]; then
+       echo "NODE NOT RUNNING!!"
+       exit 2 
+    fi
+    echo ${OUTPUT}
 
 Mira **Deployment** para conocer como desplegar el proyecto.
 

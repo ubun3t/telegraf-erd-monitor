@@ -7,7 +7,16 @@ _In this guide we are going to see how to install and configure Grafana + Influx
  _* Ubuntu 18.0.4 installed_
  
  _* ERD node running and working_
-  
+
+## Agenda
+  _1. Añadir repositorios necesarios para instlar Grafana + Influxdb + Telegraf_
+  _2. Instalar paquetes. Dependiendo de tu diseño, se hará todo en el mismo servidor donde tengas el nodo o en nodos separados. Telegraf siempre deberá de correr en el nodo. Grafana e Influxdb pueden correr fuera en otro server._
+  _3. Crear base de datos en Influxdb + usuario de acceso._
+  _4. Configurar Telegraf para leer información del nodo y enviarla a la base de datos Influxdb recién creada._
+  _5. Configurar Grafana y agregar el oriegen de datos recién creado de Influxdb para hacer consultas a los datos que se vayan almacenando ahí._ 
+  _6. Importar dashboard para tener información útil del estado del nodo._
+
+
 ## Comenzando 🚀
 
 _Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._

@@ -29,16 +29,14 @@ _Vamos a añadir los repositorios necesarios :_
  _1. Añadir repositorios. (https://docs.influxdata.com/telegraf/v1.14/introduction/installation/#)_
     
    _Influxdb + Telegraf :_
-     
+    
     wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
-    
     source /etc/lsb-release
-    
     echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
            
    _Grafana :_
     _Añadimos la rama estable  de la versión enterprise que tiene lo mismo que la "open source" pero nos permite suscribirnos en cualquier momento del futuro sin hacer nada._
-           
+    
     sudo add-apt-repository "deb https://packages.grafana.com/enterprise/deb stable main"
 
 _2. Instalar paquetes_
@@ -56,6 +54,33 @@ _2. Instalar paquetes_
     sudo apt-get install grafana
     sudo service grafana-server start
 
+_3. Vamos a crear la base de datos en Influxdb para que Telegraf pueda guardar toda la info relativa al nodo_
+    
+   Con este comando entramos en la consola de influxdb para poder lanzar comandos, crear bases de datos, usuarios, etc..
+         
+         influx 
+   Cremaos la base de datos llamada "telegraf". Podmeos dar le nombre que queramos pero es bueno que dejemos telegraf para que luego el dashboard al importarlo en grafana funcione bien.
+   
+        create database telegraf   
+   Creamos el usuario "telegraf" con password "lo que sea". Aquí puedes poner el user/pass que quieras, no es relevante. Lo usaremos en el archivo de telegraf.conf para hacer insert a la base de datos. 
+   
+        create user telegraf with password 'contraseña'  
+  
+   Muestra las bases de datos disposibles, entre ellas la nuestra
+  
+        # show databases                    
+            > show databases
+            name: databases
+            name
+            ----
+            _internal
+            telegraf
+ Nos muestra los usuarios
+ 
+        # show users                        
+            user     admin
+            ----     -----
+            telegraf false
 
 
 Mira **Deployment** para conocer como desplegar el proyecto.

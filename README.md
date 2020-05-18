@@ -18,6 +18,8 @@ In this guide we are going to see how to install and configure Grafana + Influxd
    5. Configurar Grafana y agregar el oriegen de datos recién creado de Influxdb para hacer consultas a los datos que se vayan almacenando ahí.
   
    6. Importar dashboard para tener información útil del estado del nodo.
+   
+   7. Alertas via Telegram. 
 
 
 ## Comenzando 🚀
@@ -238,7 +240,7 @@ Ahora hay que agregar un origen de datos : InfluxDB en nuestro caso.
 
 ![InfluxDB Settings Grafana](https://user-images.githubusercontent.com/16337441/82244171-1e63c380-9941-11ea-9c0e-5c5657fe5caa.png)
 
-#### 5.1 Importar el dashboard. 
+#### 6. Importar el dashboard. 
 Usa el .json **erd_dashboard.json** que comparto como plantilla para tener rápidamente información en tu dashboard. 
 Tendrás que hacer algunos ajustes en las consultas de los diferentes gráficos si has puesto otro nombre a tu nodo.
 
@@ -251,7 +253,16 @@ Algunas imágenes de los dashboard :
 ![erd_node_performace](https://user-images.githubusercontent.com/16337441/82245319-02f9b800-9943-11ea-8bce-128128d51560.png)
 
 
+#### 7. Alertas vía Telegram. 
 
+To receive notifications on telegram we’ll need to create a new Telegram bot. 
+
+#### Create your bot
+Open your telegram app and search for the user @BotFather and write this message:
+  
+    /newbot
+This is a command that tells the @BotFather to create you a new bot. 
+         
 
 
 

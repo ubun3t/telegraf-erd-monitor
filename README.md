@@ -247,6 +247,8 @@ Tendrás que hacer algunos ajustes en las consultas de los diferentes gráficos 
 Algunas imágenes de los dashboard : 
 
 
+![erd_node_status](https://user-images.githubusercontent.com/16337441/82245314-012ff480-9943-11ea-811c-6ab05206f046.png)
+![erd_node_performace](https://user-images.githubusercontent.com/16337441/82245319-02f9b800-9943-11ea-8bce-128128d51560.png)
 
 
 

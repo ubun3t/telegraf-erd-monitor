@@ -263,6 +263,22 @@ Open your telegram app and search for the user @BotFather and write this message
     /newbot
 This is a command that tells the @BotFather to create you a new bot. 
          
+![telegram_bot](https://user-images.githubusercontent.com/16337441/82247637-042ce400-9947-11ea-89e8-c5c76b218400.png)
+
+Save your "Token ID". Now, create a new group in telegram, for example : Erd Alerts. Add to this group your bot, in this example "My first bot" was the name that used it. 
+To know your chat-id you can add a @RawDataBot. This bot send to group a message with all info related to group. Something like this : 
+
+    "chat": {
+            "id": -457484388,    <-- this is your chat-id
+            "title": "Alerts ERD",
+            "type": "group",
+
+Now in Grafana we go to create a new "Notification Channel". This image explain itself. 
+
+![erd_node_telegram](https://user-images.githubusercontent.com/16337441/82247820-566e0500-9947-11ea-9dd8-d2525012c9e7.png)
+
+Test it !! 
+
 
 
 

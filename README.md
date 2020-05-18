@@ -4,12 +4,12 @@ _In this guide we are going to see how to install and configure Grafana + Influx
 
 ## Pre-requisitos 📋
  
- _* Ubuntu 18.0.4 installed_
+ _1 Ubuntu 18.0.4 installed_
  
- _* ERD node running and working_
+ _2 ERD node running_
 
 ## Agenda
-  _1. Añadir repositorios necesarios para instlar Grafana + Influxdb + Telegraf_
+  _1. Añadir repositorios necesarios para instalar Grafana + Influxdb + Telegraf_
   
   _2. Instalar paquetes. Dependiendo de tu diseño, se hará todo en el mismo servidor donde tengas el nodo o en nodos separados. Telegraf siempre deberá de correr en el nodo. Grafana e Influxdb pueden correr fuera en otro server._
   
@@ -24,7 +24,23 @@ _In this guide we are going to see how to install and configure Grafana + Influx
 
 ## Comenzando 🚀
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
+_Vamos a añadir los repositorios necesarios :_
+
+ _1. Añadir repositorios. (https://docs.influxdata.com/telegraf/v1.14/introduction/installation/#)_
+    
+   _Influxdb + Telegraf :_
+     
+    wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+    
+    source /etc/lsb-release
+    
+    echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+           
+   _Grafana :_
+    _Añadimos la rama estable  de la versión enterprise que tiene lo mismo que la "open source" pero nos permite suscribirnos en cualquier momento del futuro sin hacer nada._
+           
+    sudo add-apt-repository "deb https://packages.grafana.com/enterprise/deb stable main"
+
 
 Mira **Deployment** para conocer como desplegar el proyecto.
 

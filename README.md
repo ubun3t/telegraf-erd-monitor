@@ -238,6 +238,9 @@ Ahora hay que agregar un origen de datos : InfluxDB en nuestro caso.
 
 ![InfluxDB Settings Grafana](https://user-images.githubusercontent.com/16337441/82244171-1e63c380-9941-11ea-9c0e-5c5657fe5caa.png)
 
+#### 5.1 Importar el dashboard. 
+Usa el .json **erd_dashboard.json** que comparto como plantilla para tener rápidamente información en tu dashboard. 
+Tendrás que hacer algunos ajustes en las consultas de los diferentes gráficos si has puesto otro nombre a tu nodo.
 
 
 

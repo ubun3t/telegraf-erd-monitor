@@ -4,29 +4,29 @@ In this guide we are going to see how to install and configure Grafana + Influxd
 
 ## Pre-requisitos 📋
  
- Este documento no cubre la instalación de Ubuntu ni el nodo de Elrond. Hay muy buenas guías para ello. 
+ This document does not cover Ubuntu installation or Elrond node. There are very good guides for this.
 
 ## Agenda
-   1. Añadir repositorios necesarios para instalar Grafana + Influxdb + Telegraf
+   1. Add necessary repositories to install Grafana + Influxdb + Telegraf
   
-   2. Instalar paquetes. Dependiendo de tu diseño, se hará todo en el mismo servidor donde tengas el nodo o en nodos separados. Telegraf siempre deberá de correr en el nodo. Grafana e Influxdb pueden correr fuera en otro server.
+   2. Install packages. Depending on your design, everything will be done on the same server where you have the node or on separate nodes. Telegraf should always run on the node. Grafana and Influxdb can run outside on another server.
   
-   3. Crear base de datos en Influxdb + usuario de acceso.
+   3. Create database on Influxdb + login user.
   
-   4. Configurar Telegraf para leer información del nodo y enviarla a la base de datos Influxdb recién creada.
+   4. Configure Telegraf to read node information and send it to the newly created Influxdb database.
   
-   5. Configurar Grafana y agregar el oriegen de datos recién creado de Influxdb para hacer consultas a los datos que se vayan almacenando ahí.
+   5. Configure Grafana and add the newly created data source of Influxdb to query the data that is stored there.
   
-   6. Importar dashboard para tener información útil del estado del nodo.
+   6. Import dashboard to have useful information on node status.
    
-   7. Alertas via Telegram. 
+   7. Alerts via Telegram. 
 
 
-## Comenzando 🚀
+## Starting  🚀
 
-Vamos a añadir los repositorios necesarios :
+We are going to add the necessary repositories:
 
- #### _1. Añadir repositorios. (https://docs.influxdata.com/telegraf/v1.14/introduction/installation/#)_
+ #### 1. Add repositories. (https://docs.influxdata.com/telegraf/v1.14/introduction/installation/#)
     
    Influxdb + Telegraf :
     
@@ -36,11 +36,11 @@ Vamos a añadir los repositorios necesarios :
            
    Grafana :
     
-   Añadimos la rama estable  de la versión enterprise que tiene lo mismo que la "open source" pero nos permite suscribirnos en cualquier momento del futuro sin hacer nada.
+   We add the stable branch of the enterprise version that has the same as the "open source" but allows us to subscribe at any time in the future without doing anything.
     
     sudo add-apt-repository "deb https://packages.grafana.com/enterprise/deb stable main"
 
-#### 2. Instalar paquetes
+#### 2. Install packages
    Influxdb + Telegraf :
     
     sudo apt-get update && sudo apt-get install apt-transport-https
@@ -56,19 +56,20 @@ Vamos a añadir los repositorios necesarios :
     sudo apt-get install grafana
     sudo service grafana-server start
 
-#### 3. Vamos a crear la base de datos en Influxdb para que Telegraf pueda guardar toda la info relativa al nodo
+#### 3. We are going to create the database in Influxdb so that Telegraf can save all the information related to the node
     
-   Con este comando entramos en la consola de influxdb para poder lanzar comandos, crear bases de datos, usuarios, etc..
+ With this command we enter the influexdb console to be able to launch commands, create databases, users, etc.
          
          influx 
-   Cremaos la base de datos llamada "telegraf". Podmeos dar le nombre que queramos pero es bueno que dejemos telegraf para que luego el dashboard al importarlo en grafana funcione bien.
+         
+ We create the database called "telegraf". We can give it a name that we want but it is good that we leave telegraf so that when the dashboard is imported into grafana it works well.
    
         create database telegraf   
-   Creamos el usuario "telegraf" con password "lo que sea". Aquí puedes poner el user/pass que quieras, no es relevante. Lo usaremos en el archivo de telegraf.conf para hacer insert a la base de datos. 
+ We create the user "telegraf" with password "whatever". Here you can put the user / pass you want, it is not relevant. We will use it in the telegraf.conf file to insert the database.
    
         create user telegraf with password 'contraseña'  
   
-   Muestra las bases de datos disposibles, entre ellas la nuestra
+ Show available databases, including ours :
   
          show databases                    
             > show databases
@@ -77,16 +78,17 @@ Vamos a añadir los repositorios necesarios :
             ----
             _internal
             telegraf
- Nos muestra los usuarios
+ Users :
  
          show users                        
             user     admin
             ----     -----
             telegraf false
- #### 4. Configurar Telegraf 
+            
+ #### 4. Config Telegraf 
 
-Ahora que ya tenemos influxdb esperando datos, vamos a configurar telegraf para que lea métricas del nodo y las envíe a la base de datos. El archivo de configuración de telegraf está en "/etc/telegraf/telegraf.conf". 
-Este archivo por defecto trae un muchos "inputs" que permiten leer métricas de todo tipo de servicios (mysql, apache, nginx, postfix, red, cpu, etc...). Vamos a guardar este archivo como backup y vamos a crear un archivo desde 0 más limpio y sólo con los inputs que necesitamos. Así todo será más fácil :)
+Now that we have influxdb waiting for data, we are going to configure telegraf to read node metrics and send them to the database. The telegraf configuration file is at "/etc/telegraf/telegraf.conf".
+This file by default has many "inputs" that allow metrics to be read from all kinds of services (mysql, apache, nginx, postfix, network, cpu, etc ...). We are going to save this file as a backup and we are going to create a cleaner file from 0 and only with the inputs that we need. This will make everything easier :)
 
       ##################### Global Agent Configuration #########################
         [agent]
@@ -124,42 +126,44 @@ Este archivo por defecto trae un muchos "inputs" que permiten leer métricas de 
         name_override = "node0_stats"       
         data_format = "json"            
         json_string_fields = ["erd_node_type","erd_peer_type"]
-#### Puntos importantes del archivo : 
+#### Important points of the file : 
 
-Nombre que quieres enviar a la base de datos y será el que luego uses en las consultas en Grafana. 
+Name that you want to send to the database and it will be the one that you later use in the queries in Grafana. 
 
     hostname = "erd.node"  
-Intervalo, cada cuanto tiempo quieres leer la info. 
-       
+Interval, how often do you want to read the info.       
+    
     interval = "60s"
-Conexión con InfluxDB. Vamos a declarar un "output" basado en influxdb para decirle a telegraf que lo use para almacenar ahí las métricas. Usamos los datos del punto 3 de esta guía. 
+    
+InfluxDB connection. We are going to declare an "output" based on influexdb to tell telegraf to use it to store metrics there. We use the data from point 3 of this guide.
 
-Si nuestro servidor influxdb está en la misma máquina que telegraf. 
+If our server influxdb is on the same machine as telegraph.
     
     urls = [ "http://127.0.0.1:8086" ]   
-Si hemos instalado influxdb y grafana en otro servidor 
+If we have installed influxdb and grafana on another server
 
     urls = [ "http://YOUR-SERVER-IP:8086" ]  
 
-Vamos a definir un "input" del tipo de exec. Este tipo de input es un plugin le dice a telegraf que debe de ejecutar un comando en cada intervalo y hace un "output" en el formato que le digamos. 
+We are going to define an "input" of the exec type. This type of input is a plugin that tells telegraf that it must execute a command in each interval and it does an "output" in the format that we call it.
 
     [[inputs.exec]]
 
-Path al el script que nos servirá como input y nos dará datos para poder enviar a influxdb. Le podéis poner el nombre que queráis.
+Path to the script that will serve as input and will give us data to send to influxdb. You can put the name you want.
     
     commands = ["/etc/telegraf/check_erd_node_metrics_0"]
-Nombre de la métrica. Este nombre es el que vamos a ver en Grafana y el que vamos a seleccionar para acceder a todas las métricas. Imagínalo como una tabla dentro de la base de datos.  
+
+Metric name. This name is the one that we are going to see in Grafana and the one that we are going to select to access all the metrics. Imagine it as a table within the database.
 
     name_override = "node0_stats"
-Importante : formato en el que vamos a recibir la informamción del script. En nuestro caso será json.
+Important: format in which we will receive the script information. In our case it will be json.
 
     data_format = "json"
 
-Esta opción nos permite enviar cadenas de texto como output. Sin esta config las variables leidas  erd_node_type","erd_peer_type" que tiene cadenas de texto no se almacenarían y no las tendríamos disponibles en grafana para poder mostrarlas en nuestros dashboard. 
+This option allows us to send text strings as output. Without this config the variables read erd_node_type "," erd_peer_type "that have text strings would not be stored and we would not have them available in grafana to be able to show them in our dashboards. 
 
     json_string_fields = ["erd_node_type","erd_peer_type"]
 
-Si quisiérmos confiugrar más nodos debemos de agregar más inputs con : el script que leerá del nodo y cambiamos el nombre. Por ejemplo : 
+If we wanted to configure more nodes you should add more inputs with: the script that will read from the node and we change the name. For example : 
 
       [[inputs.exec]]
         commands = ["/etc/telegraf/check_erd_node_metrics_1"]
@@ -175,20 +179,19 @@ Si quisiérmos confiugrar más nodos debemos de agregar más inputs con : el scr
         data_format = "json"
         json_string_fields = ["erd_node_type","erd_peer_type"]
       
-  #### 4.1 Script para leer información del nodo.       
-Por defecto al instalar un node se crean varios directorios dentro del home del usuario que hemos usado para instalar. 
-Una de estas carpetas es "/elrond-utils" donde tenemos dos herramientas que nos ayudan a tener una visón en tiempo real del nodo mediante CLI : logviewer y termui. 
-Cada nodo cuando inicia lanza un servicio escuchando en el puerto 8080 para el primer nodo, 8081 para el segundo, 808X para los siguientes. Podemos acceder a ese servicio mediante el siguiente comando : 
-
-    cd /home/tu-usuario/elrond-utils/
+  #### 4.1 Script to read node information..       
+By default, when installing a node, several directories are created within the home of the user that we have used to install. One of these folders is "/ elrond-utils" where we have two tools that help us have a real-time view of the node using the CLI: logviewer and termui.
+Each node when it starts launches a service listening on port 8080 for the first node, 8081 for the second node, 808X for the following ones. We can access that service using the following command:
     
+    cd /home/tu-usuario/elrond-utils/
     ./termui -address localhost:8080
-El script check_erd_node_metrics_X lo que hace es hacer uso de esa información de una forma muy sencilla : 
-      
+
+What the check_erd_node_metrics_X script does is make use of that information in a very simple way:
+
     cd /etc/telegraf/
     vim check_erd_node_metrics_0   
 
-Pegamos el siguiente contenido :
+We paste the following content:
 
     #!/bin/bash
    
@@ -200,16 +203,17 @@ Pegamos el siguiente contenido :
        exit 2 
     fi
     echo ${OUTPUT}
-Guardar los cambios, hacer el archivo ejecutable y hacer a telegraf propietario : 
+    
+Save the changes, make the file executable and make the owner telegraf: 
 
     chmod +x check_erd_node_metrics_0
     chown telegraf check_erd_node_metrics_0 
 
-Probamos que todo funcione :
+We test that everything works:
 
     sudo telegraf telegraf --config telegraf.conf
     
-Si ves algo como lo siguiente, es que todo ha ido bien : 
+If you see something like the following, it is that everything went well: 
 
     2020-05-17T17:57:32Z I! Starting Telegraf 1.14.2
     2020-05-17T17:57:32Z I! Using config file: /etc/telegraf/telegraf.conf
@@ -222,38 +226,36 @@ Si ves algo como lo siguiente, es que todo ha ido bien :
 
 
 #### 5. Configurar Grafana.
-Grafana por defecto escucha en el puerto 3000. Así que deberás escribir la ip-your-server:3000 para acceder a su entoreno web : 
+Grafana by default listens on port 3000. So you will have to write the ip-your-server: 3000 to access its web environment:
      
      http://IP:address:3000
 
 ![login](https://user-images.githubusercontent.com/16337441/82241923-3e918380-993d-11ea-9efd-709c82ffcffa.png)
 
-El usuario y contraseña por defecto son  admin/admin. Te pedirá que cambies la contraseña. 
+The default username and password are admin / admin. It will ask you to change the password.
 
 ![password](https://user-images.githubusercontent.com/16337441/82241938-42250a80-993d-11ea-8e6d-8ade7f7d6225.png)
 
-Ya estamos dentro!! 
-
 ![data_source](https://user-images.githubusercontent.com/16337441/82241953-481aeb80-993d-11ea-9e98-69f24a21357b.png)
 
-Ahora hay que agregar un origen de datos : InfluxDB en nuestro caso. 
+Now we have to add a data source: InfluxDB in our case. 
 
 ![InfluxDB Settings Grafana](https://user-images.githubusercontent.com/16337441/82244171-1e63c380-9941-11ea-9c0e-5c5657fe5caa.png)
 
-#### 6. Importar el dashboard. 
-Usa el .json **erd_dashboard.json** que comparto como plantilla para tener rápidamente información en tu dashboard. 
-Tendrás que hacer algunos ajustes en las consultas de los diferentes gráficos si has puesto otro nombre a tu nodo.
+#### 6. Import the dashboard. 
+Use the .json **erd_dashboard.json** that I share as a template to quickly have information on your dashboard.
+You will have to make some adjustments in the queries of the different graphs if you have given another name to your node.
 
 ![import_json](https://user-images.githubusercontent.com/16337441/82244777-0b052800-9942-11ea-88e1-2750460ecf9d.png)
 
-Algunas imágenes de los dashboard : 
+Dashboard : 
 
 
 ![erd_node_status](https://user-images.githubusercontent.com/16337441/82245314-012ff480-9943-11ea-811c-6ab05206f046.png)
 ![erd_node_performace](https://user-images.githubusercontent.com/16337441/82245319-02f9b800-9943-11ea-8bce-128128d51560.png)
 
 
-#### 7. Alertas vía Telegram. 
+#### 7. Alerts via Telegram. 
 
 To receive notifications on telegram we’ll need to create a new Telegram bot. 
 

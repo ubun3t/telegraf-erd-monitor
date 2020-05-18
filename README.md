@@ -2,6 +2,10 @@
 
 _In this guide we are going to see how to install and configure Grafana + Influxdb + Telegraf to monitor a node based on Ubuntu 18.0.4._
 
+## Pre-requisitos 📋
+  _ * Ubuntu 18.0.4 installed_
+  _ * ERD node running and working_
+  
 ## Comenzando 🚀
 
 _Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._

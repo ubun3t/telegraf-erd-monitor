@@ -6,6 +6,8 @@ In this guide we are going to see how to install and configure Grafana + Influxd
  
  This document does not cover Ubuntu installation or Elrond node. There are very good guides for this.
  
+ Install a Elrond node : 
+ 
  https://docs.elrond.com/validators/system-requirements
 
 ## Agenda

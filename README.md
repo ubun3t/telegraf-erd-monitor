@@ -122,7 +122,7 @@ Este archivo por defecto trae un muchos "inputs" que permiten leer métricas de 
         name_override = "node0_stats"       
         data_format = "json"            
         json_string_fields = ["erd_node_type","erd_peer_type"]
-Puntos importantes del archivo : 
+#### Puntos importantes del archivo : 
 
 Nombre que quieres enviar a la base de datos y será el que luego uses en las consultas en Grafana. 
 

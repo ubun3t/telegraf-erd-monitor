@@ -39,7 +39,7 @@ _Vamos a añadir los repositorios necesarios :_
     
     sudo add-apt-repository "deb https://packages.grafana.com/enterprise/deb stable main"
 
-####_2. Instalar paquetes_
+#### _2. Instalar paquetes_
     _Influxdb + Telegraf :_
     
     sudo apt-get update && sudo apt-get install apt-transport-https
@@ -54,7 +54,7 @@ _Vamos a añadir los repositorios necesarios :_
     sudo apt-get install grafana
     sudo service grafana-server start
 
-####_3. Vamos a crear la base de datos en Influxdb para que Telegraf pueda guardar toda la info relativa al nodo_
+#### _3. Vamos a crear la base de datos en Influxdb para que Telegraf pueda guardar toda la info relativa al nodo_
     
    Con este comando entramos en la consola de influxdb para poder lanzar comandos, crear bases de datos, usuarios, etc..
          
@@ -68,7 +68,7 @@ _Vamos a añadir los repositorios necesarios :_
   
    Muestra las bases de datos disposibles, entre ellas la nuestra
   
-        # show databases                    
+         show databases                    
             > show databases
             name: databases
             name
@@ -77,7 +77,7 @@ _Vamos a añadir los repositorios necesarios :_
             telegraf
  Nos muestra los usuarios
  
-        # show users                        
+         show users                        
             user     admin
             ----     -----
             telegraf false

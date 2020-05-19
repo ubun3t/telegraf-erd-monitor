@@ -259,27 +259,31 @@ Algunas imágenes de los dashboard :
 
 #### 7. Alertas vía Telegram. 
 
-To receive notifications on telegram we’ll need to create a new Telegram bot. 
+Para poder recibir notificaciones en Telegram debes de crear un bot.
 
 #### Create your bot
-Open your telegram app and search for the user @BotFather and write this message:
+Abre la aplicación de Telegram y busca el usuario @BotFather y escribe este mensaje en el chat: 
   
     /newbot
-This is a command that tells the @BotFather to create you a new bot. 
+Este comando inica el proceso de creación del bot y te preguntará por el nombre que quieras usar para identificarlo. 
          
 ![telegram_bot](https://user-images.githubusercontent.com/16337441/82247637-042ce400-9947-11ea-89e8-c5c76b218400.png)
 
-Save your "Token ID". Now, create a new group in telegram, for example : Erd Alerts. Add to this group your bot, in this example "My first bot" was the name that used it. 
-To know your chat-id you can add a @RawDataBot. This bot send to group a message with all info related to group. Something like this : 
+Guarda tu Token ID, lo necesitarás en breve. Ahora : 
+   
+    1. Crea un nuevo grupo : Alertas ERD o lo que más te guste.
+    2. Agrega a ese grupo el bot recién creado. 
+    3. Agrega al chat el bot  @RawDataBot, que te ayudará a conocer el chat-id del grupo. 
+
+Busca algo como esto: 
 
     "chat": {
             "id": -457484388,    <-- this is your chat-id
             "title": "Alerts ERD",
             "type": "group",
-
-Now in Grafana we go to create a new "Notification Channel". This image explain itself. 
+En Grafana debes de ir a Alerts/Notifications Channels y agregar un nuevo canal : Telegram. Pega tu Token-ID y el chat-id. Haz un test y verás que te debe de aparecer un nuevo mensaje en el grupo. 
+Esta imagen se explica por sí sola. 
 
 ![erd_node_telegram](https://user-images.githubusercontent.com/16337441/82247820-566e0500-9947-11ea-9dd8-d2525012c9e7.png)
 
-Test it !! 
 

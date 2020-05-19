@@ -87,7 +87,11 @@ Vamos a añadir los repositorios necesarios :
 
 Ahora que ya tenemos influxdb esperando datos, vamos a configurar telegraf para que lea métricas del nodo y las envíe a la base de datos. El archivo de configuración de telegraf está en "/etc/telegraf/telegraf.conf". 
 Este archivo por defecto trae un muchos "inputs" que permiten leer métricas de todo tipo de servicios (mysql, apache, nginx, postfix, red, cpu, etc...). Vamos a guardar este archivo como backup y vamos a crear un archivo desde 0 más limpio y sólo con los inputs que necesitamos. Así todo será más fácil :)
-
+   ```
+    cd /etc/telegraf
+    mv telegraf.conf telegraf.conf_ori
+    vim telegraf.conf
+   ```
       ##################### Global Agent Configuration #########################
         [agent]
         hostname = "erd.node"           

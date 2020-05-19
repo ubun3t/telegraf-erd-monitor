@@ -28,7 +28,7 @@ In this guide we are going to see how to install and configure Grafana + Influxd
 
 ## Starting  🚀
 
-If you prefer to watch a video to read ... here is one:
+This video shows the whole process:
 
 [![Watch the video](https://img.youtube.com/vi/QyFkp-tuNPY/hqdefault.jpg)](https://www.youtube.com/watch?v=QyFkp-tuNPY)
 

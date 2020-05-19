@@ -32,6 +32,8 @@ If you prefer to watch a video to read ... here is one:
 
 [![Watch the video](https://img.youtube.com/vi/QyFkp-tuNPY/hqdefault.jpg)](https://www.youtube.com/watch?v=QyFkp-tuNPY)
 
+
+
 We are going to add the necessary repositories:
 
  #### 1. Add repositories. (https://docs.influxdata.com/telegraf/v1.14/introduction/installation/#)

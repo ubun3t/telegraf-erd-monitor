@@ -42,6 +42,7 @@ We are going to add the necessary repositories:
     
    We add the stable branch of the enterprise version that has the same as the "open source" but allows us to subscribe at any time in the future without doing anything.
     
+    wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
     sudo add-apt-repository "deb https://packages.grafana.com/enterprise/deb stable main"
 
 #### 2. Install packages

@@ -23,10 +23,13 @@ En esta guía vamos a ver cómo instalar y configurar Grafana + Influxdb + Teleg
 
 
 ## Comenzando 🚀
+Este vídeo muestra todo el proceso :
+
+[![Watch the video](https://img.youtube.com/vi/QyFkp-tuNPY/hqdefault.jpg)](https://www.youtube.com/watch?v=QyFkp-tuNPY)
 
 Vamos a añadir los repositorios necesarios :
 
- #### _1. Añadir repositorios. (https://docs.influxdata.com/telegraf/v1.14/introduction/installation/#)_
+ #### 1. Añadir repositorios. (https://docs.influxdata.com/telegraf/v1.14/introduction/installation/#)
     
    Influxdb + Telegraf :
     

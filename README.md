@@ -60,6 +60,10 @@ We are going to add the necessary repositories:
     sudo apt-get install grafana
     sudo service grafana-server start
 
+Configure the Grafana server to start at boot:
+
+    sudo systemctl enable grafana-server.service
+
 #### 3. We are going to create the database in Influxdb so that Telegraf can save all the information related to the node
     
  With this command we enter the influxdb console to be able to launch commands, create databases, users, etc.

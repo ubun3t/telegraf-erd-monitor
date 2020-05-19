@@ -1,6 +1,6 @@
 # Monitor ERD Node with Telegraf+Grafana
 
-In this guide we are going to see how to install and configure Grafana + Influxdb + Telegraf to monitor a Elrond node based on Ubuntu 18.0.4.
+In this guide we are going to see how to install and configure Grafana + Influxdb + Telegraf to monitor a Elrond node based on Ubuntu 18.04.
 
 ## Prerequisites 📋
  

@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 2,
   "links": [],
   "panels": [
     {
@@ -1369,7 +1369,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "Telegraf",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -1409,7 +1409,7 @@
         "colorMode": "value",
         "graphMode": "area",
         "justifyMode": "auto",
-        "orientation": "horizontal",
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "mean"
@@ -1434,7 +1434,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "uptime",
+          "measurement": "system",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -1455,7 +1455,7 @@
           ],
           "tags": [
             {
-              "key": "hostname",
+              "key": "host",
               "operator": "=",
               "value": "erd.node"
             }

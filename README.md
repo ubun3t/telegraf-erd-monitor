@@ -56,7 +56,6 @@ We are going to add the necessary repositories:
    Grafana :  (https://grafana.com/docs/grafana/latest/installation/debian/)
             
     sudo apt-get install -y software-properties-common wget
-    wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
     sudo apt-get update
     sudo apt-get install grafana
     sudo service grafana-server start

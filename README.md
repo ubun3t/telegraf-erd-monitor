@@ -98,7 +98,11 @@ Configure the Grafana server to start at boot:
 
 Now that we have influxdb waiting for data, we are going to configure telegraf to read node metrics and send them to the database. The telegraf configuration file is at "/etc/telegraf/telegraf.conf".
 This file by default has many "inputs" that allow metrics to be read from all kinds of services (mysql, apache, nginx, postfix, network, cpu, etc ...). We are going to save this file as a backup and we are going to create a cleaner file from 0 and only with the inputs that we need. This will make everything easier :)
-
+   ```
+    cd /etc/telegraf
+    mv telegraf.conf telegraf.conf_ori
+    vim telegraf.conf
+   ```
       ##################### Global Agent Configuration #########################
         [agent]
         hostname = "erd.node"           

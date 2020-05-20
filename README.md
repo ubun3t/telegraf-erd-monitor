@@ -292,7 +292,13 @@ Now in Grafana we go to create a new "Notification Channel". This image explain 
 
 ![erd_node_telegram](https://user-images.githubusercontent.com/16337441/82247820-566e0500-9947-11ea-9dd8-d2525012c9e7.png)
 
-Test it !! 
+If you want to see a image in your telegram alerts you need install a plugin and some dependecies on Ubuntu.
+   ```
+   grafana-cli plugins install grafana-image-renderer
+   ```
+    sudo apt install libx11-6 libx11-xcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrender1 libxtst6 libglib2.0-0 libnss3 libcups2  libdbus-1-3 libxss1 libxrandr2 libgtk-3-0 libgtk-3-0 libasound2
+
+
 
 
 

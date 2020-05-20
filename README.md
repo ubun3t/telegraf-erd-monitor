@@ -28,12 +28,6 @@ In this guide we are going to see how to install and configure Grafana + Influxd
 
 ## Starting  🚀
 
-This video shows the whole process:
-
-[![Watch the video](https://img.youtube.com/vi/QyFkp-tuNPY/hqdefault.jpg)](https://www.youtube.com/watch?v=QyFkp-tuNPY)
-
-
-
 We are going to add the necessary repositories:
 
  #### 1. Add repositories. (https://docs.influxdata.com/telegraf/v1.14/introduction/installation/#)

@@ -315,7 +315,7 @@ Rule
  3. For - Specify how long the query needs to violate the configured thresholds before the alert notification triggers.
 
 
-
+![grafana_alerts](https://user-images.githubusercontent.com/16337441/82534877-3eb09f80-9b46-11ea-9270-4f8f987e6874.png)
 
 
 

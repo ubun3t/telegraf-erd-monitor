@@ -300,3 +300,6 @@ Regla
   1. Nombre: ingrese un nombre descriptivo. El nombre se mostrará en la lista de Reglas de alertas.
   2. Evaluar cada: especifique con qué frecuencia se debe evaluar la regla. Esto se conoce como el intervalo de evaluación.
   3. For: especifique cuánto tiempo debe violar la consulta los umbrales configurados antes de que se active la notificación de alerta. Es decir, si la regla se revisa cada minuto y en "For" se establece 5m, hasta que no hayan pasado 5m desde que la alerta cambió de estado no se enviará una notificación. 
+ 
+![grafana_alerts](https://user-images.githubusercontent.com/16337441/82534877-3eb09f80-9b46-11ea-9270-4f8f987e6874.png)
+

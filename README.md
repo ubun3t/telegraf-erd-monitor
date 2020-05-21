@@ -298,6 +298,21 @@ If you want to see a image in your telegram alerts you need install a plugin and
    ```
     sudo apt install libx11-6 libx11-xcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrender1 libxtst6 libglib2.0-0 libnss3 libcups2  libdbus-1-3 libxss1 libxrandr2 libgtk-3-0 libgtk-3-0 libasound2
 
+Creating Alerts. The .json has configured somes alerts but if you want to know how this works, visit https://grafana.com/docs/grafana/latest/alerting/create-alerts/
+
+Add or edit an alert rule
+
+ 1. Navigate to the panel you want to add or edit an alert rule for, click the title, and then click Edit.
+ 2. On the Alert tab, click Create Alert. If an alert already exists for this panel, then you can just edit the fields on the  Alert tab.
+ 3. Fill out the fields. Descriptions are listed below in Alert rule fields.
+ 4. When you have finished writing your rule, click Save in the upper right corner to save alert rule and the dashboard.
+ 5. (Optional but recommended) Click Test rule to make sure the rule returns the results you expect.
+
+Rule
+
+ 1. Name - Enter a descriptive name. The name will be displayed in the Alert Rules list.
+ 2. Evaluate every - Specify how often the scheduler should evaluate the alert rule. This is referred to as the evaluation interval.
+ 3. For - Specify how long the query needs to violate the configured thresholds before the alert notification triggers.
 
 
 

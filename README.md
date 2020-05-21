@@ -264,8 +264,8 @@ You will have to make some adjustments in the queries of the different graphs if
 Dashboard : 
 
 
-![erd_node_status](https://user-images.githubusercontent.com/16337441/82245314-012ff480-9943-11ea-811c-6ab05206f046.png)
-![erd_node_performace](https://user-images.githubusercontent.com/16337441/82245319-02f9b800-9943-11ea-8bce-128128d51560.png)
+
+![erd_dashboard_02](https://user-images.githubusercontent.com/16337441/82535549-4ae92c80-9b47-11ea-8697-5d9ddbc9aae2.png)![erd_node_performace](https://user-images.githubusercontent.com/16337441/82245319-02f9b800-9943-11ea-8bce-128128d51560.png)
 
 
 #### 7. Alerts via Telegram. 

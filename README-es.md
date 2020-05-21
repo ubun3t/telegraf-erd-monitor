@@ -83,6 +83,18 @@ Vamos a añadir los repositorios necesarios :
             user     admin
             ----     -----
             telegraf false
+ Los puertos por defecto de Influx es el 8086 para HTTP y 8088 para RPC. Si corres 7 o 9 nodos en el mismo servidor se va a crear un conflicto porque el los nodos 7 y 9 van a intentar usar esos mismo puertos. En ese caso, se tienen que cambiar los puertos que usa Influx por otros a tu elección. 
+  
+```
+    cd /etc/influxdb/
+    vim /etc/influxdb/influxdb.conf
+```    
+    # Bind address to use for the RPC service for backup and restore.
+    # bind-address = "127.0.0.1:8088"
+    
+    # The bind address used by the HTTP service.
+    # bind-address = ":8086"
+ 
  #### 4. Configurar Telegraf 
 
 Ahora que ya tenemos influxdb esperando datos, vamos a configurar telegraf para que lea métricas del nodo y las envíe a la base de datos. El archivo de configuración de telegraf está en "/etc/telegraf/telegraf.conf". 

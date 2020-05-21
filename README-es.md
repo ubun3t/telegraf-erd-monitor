@@ -2,6 +2,8 @@
 
 En esta guía vamos a ver cómo instalar y configurar Grafana + Influxdb + Telegraf para monitorizar nuestros nodos Elrond en un Ubuntu 18.04
 
+[![Watch the video](https://img.youtube.com/vi/5Yxq0GfpQU8/maxresdefault.jpg)](https://www.youtube.com/watch?v=5Yxq0GfpQU8)
+
 ## Pre-requisitos 📋
  
  Este documento no cubre la instalación de Ubuntu ni el nodo de Elrond. Hay muy buenas guías para ello. 

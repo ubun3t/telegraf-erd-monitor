@@ -298,7 +298,9 @@ If you want to see a image in your telegram alerts you need install a plugin and
    ```
     sudo apt install libx11-6 libx11-xcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrender1 libxtst6 libglib2.0-0 libnss3 libcups2  libdbus-1-3 libxss1 libxrandr2 libgtk-3-0 libgtk-3-0 libasound2
 
-Creating Alerts. The .json has configured somes alerts but if you want to know how this works, visit https://grafana.com/docs/grafana/latest/alerting/create-alerts/
+Creating Alerts. 
+
+The .json has configured somes alerts but if you want to know how this works, visit https://grafana.com/docs/grafana/latest/alerting/create-alerts/
 
 Add or edit an alert rule
 

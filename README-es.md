@@ -285,4 +285,18 @@ Esta imagen se explica por sí sola.
 
 ![erd_node_telegram](https://user-images.githubusercontent.com/16337441/82247820-566e0500-9947-11ea-9dd8-d2525012c9e7.png)
 
+El .json ha configurado algunas alertas, pero si desea saber cómo funciona esto, visite https://grafana.com/docs/grafana/latest/alerting/create-alerts/
 
+Agregar o editar una regla de alerta
+
+  1. Navegue hasta el panel para el que desea agregar o editar una regla de alerta, haga clic en el título y luego haga clic en Editar. Recuerde que sólo los paneles que son del tipo "Graph" tendrán la pestaña de alertas.
+  2. En la pestaña Alerta, haga clic en Crear alerta. Si ya existe una alerta para este panel, puede editar los campos en la pestaña Alerta.
+  3. Completa los campos. 
+  4. Cuando haya terminado de escribir su regla, haga clic en Guardar en la esquina superior derecha para guardar la regla de alerta y el dashboard.
+  5.(Opcional pero recomendado) Haga clic en Probar regla para asegurarse de que la regla devuelva los resultados que espera.
+
+Regla
+
+  1. Nombre: ingrese un nombre descriptivo. El nombre se mostrará en la lista de Reglas de alertas.
+  2. Evaluar cada: especifique con qué frecuencia se debe evaluar la regla. Esto se conoce como el intervalo de evaluación.
+  3. For: especifique cuánto tiempo debe violar la consulta los umbrales configurados antes de que se active la notificación de alerta. Es decir, si la regla se revisa cada minuto y en "For" se establece 5m, hasta que no hayan pasado 5m desde que la alerta cambió de estado no se enviará una notificación. 

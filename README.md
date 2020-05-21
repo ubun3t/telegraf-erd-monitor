@@ -93,6 +93,18 @@ Configure the Grafana server to start at boot:
             user     admin
             ----     -----
             telegraf false
+
+The default port for influx is 8086 for http and 8088 for RPC. If you run 7 or 9 nodes in same machine you will have a conflict with your node 7 or 9 because this node will try to use the same ports, 8086/8088. In this case you can change the influxdb listens ports to another ports. 
+```
+    cd /etc/influxdb/
+    vim /etc/influxdb/influxdb.conf
+```    
+    # Bind address to use for the RPC service for backup and restore.
+    # bind-address = "127.0.0.1:8088"
+    
+    # The bind address used by the HTTP service.
+    # bind-address = ":8086"
+
             
  #### 4. Config Telegraf 
 

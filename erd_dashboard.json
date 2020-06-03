@@ -15,9 +15,213 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 2,
   "links": [],
   "panels": [
+    {
+      "datasource": "Telegraf",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 0,
+        "y": 0
+      },
+      "id": 91,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "limit": 1,
+          "values": true
+        }
+      },
+      "pluginVersion": "7.0.0",
+      "targets": [
+        {
+          "alias": "$col",
+          "groupBy": [
+            {
+              "params": [
+                "5m"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "node0_stats",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "erd_node_display_name"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [
+                  "Name"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=",
+              "value": "erd.node"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Node Name",
+      "type": "stat"
+    },
+    {
+      "datasource": "Telegraf",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 3,
+        "y": 0
+      },
+      "id": 92,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "limit": 1,
+          "values": true
+        }
+      },
+      "pluginVersion": "7.0.0",
+      "targets": [
+        {
+          "alias": "$col",
+          "groupBy": [
+            {
+              "params": [
+                "5m"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "node0_stats",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "erd_latest_tag_software_version"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [
+                  "Name"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=",
+              "value": "erd.node"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Node Version",
+      "type": "stat"
+    },
     {
       "collapsed": false,
       "datasource": null,
@@ -25,7 +229,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 0
+        "y": 2
       },
       "id": 30,
       "panels": [],
@@ -64,7 +268,7 @@
         "h": 5,
         "w": 4,
         "x": 0,
-        "y": 1
+        "y": 3
       },
       "id": 28,
       "options": {
@@ -278,7 +482,7 @@
         "h": 5,
         "w": 3,
         "x": 4,
-        "y": 1
+        "y": 3
       },
       "id": 34,
       "links": [],
@@ -426,7 +630,7 @@
         "h": 5,
         "w": 3,
         "x": 7,
-        "y": 1
+        "y": 3
       },
       "id": 41,
       "links": [],
@@ -598,7 +802,7 @@
         "h": 2,
         "w": 2,
         "x": 10,
-        "y": 1
+        "y": 3
       },
       "id": 36,
       "options": {
@@ -701,7 +905,7 @@
         "h": 5,
         "w": 3,
         "x": 12,
-        "y": 1
+        "y": 3
       },
       "id": 38,
       "links": [],
@@ -849,7 +1053,7 @@
         "h": 5,
         "w": 2,
         "x": 15,
-        "y": 1
+        "y": 3
       },
       "id": 43,
       "links": [],
@@ -938,7 +1142,7 @@
         "h": 5,
         "w": 4,
         "x": 17,
-        "y": 1
+        "y": 3
       },
       "id": 89,
       "limit": 10,
@@ -1029,7 +1233,7 @@
         "h": 3,
         "w": 2,
         "x": 10,
-        "y": 3
+        "y": 5
       },
       "id": 32,
       "links": [],
@@ -1169,7 +1373,7 @@
         "h": 6,
         "w": 14,
         "x": 0,
-        "y": 6
+        "y": 8
       },
       "hiddenSeries": false,
       "id": 87,
@@ -1488,7 +1692,7 @@
         "h": 3,
         "w": 3,
         "x": 14,
-        "y": 6
+        "y": 8
       },
       "hiddenSeries": false,
       "id": 86,
@@ -1617,7 +1821,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 12
+        "y": 14
       },
       "id": 72,
       "panels": [],
@@ -1665,7 +1869,7 @@
         "h": 4,
         "w": 6,
         "x": 0,
-        "y": 13
+        "y": 15
       },
       "id": 85,
       "links": [],
@@ -1775,7 +1979,7 @@
         "h": 4,
         "w": 3,
         "x": 6,
-        "y": 13
+        "y": 15
       },
       "id": 80,
       "options": {
@@ -1890,7 +2094,7 @@
         "h": 4,
         "w": 3,
         "x": 9,
-        "y": 13
+        "y": 15
       },
       "id": 84,
       "links": [],
@@ -1989,7 +2193,7 @@
         "h": 4,
         "w": 3,
         "x": 12,
-        "y": 13
+        "y": 15
       },
       "id": 81,
       "links": [],
@@ -2098,7 +2302,7 @@
         "h": 4,
         "w": 3,
         "x": 15,
-        "y": 13
+        "y": 15
       },
       "id": 83,
       "links": [],
@@ -2201,7 +2405,7 @@
         "h": 4,
         "w": 5,
         "x": 18,
-        "y": 13
+        "y": 15
       },
       "id": 82,
       "links": [],
@@ -2374,7 +2578,7 @@
             "type": "query"
           }
         ],
-        "executionErrorState": "alerting",
+        "executionErrorState": "keep_state",
         "for": "5m",
         "frequency": "1m",
         "handler": 1,
@@ -2400,7 +2604,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 17
+        "y": 19
       },
       "hiddenSeries": false,
       "id": 73,
@@ -2569,13 +2773,13 @@
             "type": "query"
           }
         ],
-        "executionErrorState": "alerting",
+        "executionErrorState": "keep_state",
         "for": "5m",
         "frequency": "1m",
         "handler": 1,
         "message": ">20% IOWait CPU",
         "name": "CPU IOWait alert",
-        "noDataState": "no_data",
+        "noDataState": "keep_state",
         "notifications": []
       },
       "aliasColors": {},
@@ -2595,7 +2799,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 17
+        "y": 19
       },
       "hiddenSeries": false,
       "id": 78,
@@ -2749,7 +2953,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 26
+        "y": 28
       },
       "hiddenSeries": false,
       "id": 79,
@@ -2922,7 +3126,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 26
+        "y": 28
       },
       "hiddenSeries": false,
       "id": 22,
@@ -3131,7 +3335,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 33
+        "y": 35
       },
       "hiddenSeries": false,
       "id": 74,
@@ -3345,7 +3549,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 33
+        "y": 35
       },
       "hiddenSeries": false,
       "id": 76,
@@ -3549,7 +3753,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 40
+        "y": 42
       },
       "hiddenSeries": false,
       "id": 75,
@@ -3753,7 +3957,7 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -3772,5 +3976,5 @@
   "timezone": "",
   "title": "erd.node",
   "uid": "VXS2nMgGq",
-  "version": 16
+  "version": 9
 }

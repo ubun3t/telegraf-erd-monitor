@@ -42,6 +42,10 @@ Vamos a añadir los repositorios necesarios :
     
     sudo add-apt-repository "deb https://packages.grafana.com/enterprise/deb stable main"
 
+Para que el comando add-apt-repository esté disponible, debes instalar el paquete software-properties-common :
+  
+    sudo apt-get install software-properties-common
+
 #### 2. Instalar paquetes
    Influxdb + Telegraf :
     

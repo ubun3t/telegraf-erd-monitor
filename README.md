@@ -47,6 +47,11 @@ We are going to add the necessary repositories:
     wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
     sudo add-apt-repository "deb https://packages.grafana.com/enterprise/deb stable main"
 
+To get the add-apt-repository command, install the software-properties-common package:
+  
+    sudo apt-get install software-properties-common
+  
+
 #### 2. Install packages
    Influxdb + Telegraf :
     
